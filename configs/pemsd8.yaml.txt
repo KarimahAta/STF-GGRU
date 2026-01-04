@@ -1,0 +1,46 @@
+seed: 42
+device: auto
+
+d:
+  name: PeMSD8
+  path: data/PeMSD8
+  raw_file: PeMSD8.dyna
+  sensors: 170
+  features: 3
+  interval: 5
+  normalize: true
+
+w:
+  h: 12
+  p: 1
+
+m:
+  h: 64
+  k: 8
+  a: 0.5
+  dp: 0.3
+
+t:
+  lr: 0.001
+  bs: 32
+  ep: 100
+  es: 15
+  wd: 0.00001
+  clip: 5.0
+
+split:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+
+flags:
+  temporal: true
+  spatial: true
+  istfa: true
+  dknn: true
+  cka: true
+
+out:
+  dir: results/pemsd8
+  save_best: true
+  log_interval: 1

@@ -1,0 +1,70 @@
+# =========================
+# General
+# =========================
+seed: 42
+device: auto        # auto | cpu | cuda
+
+# =========================
+# Dataset
+# =========================
+d:
+  name: PeMSD4
+  path: data/PeMSD4
+  raw_file: PeMSD4.dyna
+  sensors: 307
+  features: 3        # flow, occupancy, speed
+  interval: 5        # minutes
+  normalize: true
+
+# =========================
+# Windowing
+# =========================
+w:
+  h: 12              # history length (time steps)
+  p: 1               # prediction horizon
+
+# =========================
+# Model (STF-GGRU)
+# =========================
+m:
+  h: 64              # hidden dimension
+  k: 8               # K for D-KNN
+  a: 0.5             # ISTFA fusion weight (alpha)
+  dp: 0.3            # dropout rate
+
+# =========================
+# Training
+# =========================
+t:
+  lr: 0.001
+  bs: 32
+  ep: 100
+  es: 15             # early stopping patience
+  wd: 0.00001        # weight decay
+  clip: 5.0          # gradient clipping
+
+# =========================
+# Split
+# =========================
+split:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+
+# =========================
+# Ablation Flags (default: full model)
+# =========================
+flags:
+  temporal: true
+  spatial: true
+  istfa: true
+  dknn: true
+  cka: true
+
+# =========================
+# Output
+# =========================
+out:
+  dir: results/pemsd4
+  save_best: true
+  log_interval: 1

@@ -1,0 +1,33 @@
+seed: 42
+device: auto
+
+d:
+  name: PeMSD4
+  path: data/PeMSD4
+  sensors: 307
+
+w:
+  h: 12
+  p: 1
+
+# =========================
+# Sensitivity Analysis
+# =========================
+sensitivity:
+  dknn_k: [4, 8, 12, 16]
+  istfa_alpha: [0.3, 0.5, 0.7]
+  hidden_dim: [32, 64, 128]
+  dropout: [0.1, 0.3, 0.5]
+
+t:
+  lr: 0.001
+  bs: 32
+  ep: 50
+  es: 10
+
+flags:
+  temporal: true
+  spatial: true
+  istfa: true
+  dknn: true
+  cka: true
